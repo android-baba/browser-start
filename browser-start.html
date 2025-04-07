@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Start Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo {
+      margin-top: 80px;
+    }
+
+    .logo img {
+      width: 270px;
+    }
+
+    .search-bar {
+      margin: 30px 0;
+      width: 560px;
+      max-width: 90%;
+      display: flex;
+      border: 1px solid #ddd;
+      border-radius: 24px;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .search-bar input {
+      border: none;
+      outline: none;
+      font-size: 18px;
+      width: 100%;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 40px 0 10px;
+    }
+
+    .shortcuts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      max-width: 800px;
+      width: 90%;
+      gap: 25px;
+      justify-items: center;
+      padding-bottom: 80px;
+    }
+
+    .shortcut {
+      text-align: center;
+      color: #444;
+      text-decoration: none;
+    }
+
+    .shortcut img {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      margin-bottom: 8px;
+      object-fit: cover;
+    }
+
+    .shortcut span {
+      font-size: 14px;
+      display: block;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo">
+    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_160x56dp.png" alt="Google">
+  </div>
+
+  <form class="search-bar" action="https://www.google.com/search" method="GET">
+    <input type="text" name="q" placeholder="Search Google or type a URL">
+  </form>
+
+  <div class="section-title">Start - Favorites</div>
+  <div class="shortcuts" id="shortcuts"></div>
+
+  <script>
+    (() => {
+      const userBookmarks = [
+        { name: "Google", url: "https://www.google.com/?client=safari" },
+        { name: "Seedr", url: "https://www.seedr.cc/" },
+        { name: "GSM Arena", url: "https://www.gsmarena.com/" },
+        { name: "DownloadMing", url: "https://downloadming.ws/" },
+        { name: "Bike Nation", url: "https://bikenationmag.com/" },
+        { name: "Drive Arabia", url: "https://www.drivearabia.com/" },
+        { name: "PagalNew", url: "https://pagalnew.com/" },
+        { name: "TorrentGalaxy", url: "https://torrentgalaxy.to/" },
+        { name: "JalshaMoviez 1", url: "http://jalshamoviez.yachts/" },
+        { name: "JalshaMoviez 2", url: "https://m.jalshamoviez.com.lc/" },
+        { name: "DownloadHub", url: "https://www.downloadhub.so/" },
+        { name: "Full4Movies", url: "https://www.full4movies.directory/" },
+        { name: "IP Site", url: "https://111.90.159.132/" },
+        { name: "1TamilMV", url: "http://1tamilmv.re/" },
+        { name: "Braflix", url: "https://www.braflix.ru/" },
+        { name: "1337x Home", url: "https://1337x.st/home/" },
+        { name: "1337x Mirror", url: "https://1337x.unblockninja.com/home/" },
+        { name: "YTS", url: "https://yts.mx/" },
+        { name: "YTS Official", url: "https://yts-official.mx/" },
+        { name: "EZTV", url: "https://eztv.torrentbay.to/" },
+        { name: "PSARips", url: "https://psarips.com/" },
+        { name: "TorrentKitty", url: "https://kr.torrentkitty.net/search/" },
+        { name: "uIndex", url: "https://uindex.org/" },
+        { name: "BTDig", url: "https://btdig.com/index.html" }
+      ];
+
+      const container = document.getElementById("shortcuts");
+
+      userBookmarks.forEach(bookmark => {
+        const a = document.createElement("a");
+        a.href = bookmark.url;
+        a.className = "shortcut";
+        a.target = "_blank";
+        a.innerHTML = `
+          <img src="https://www.google.com/s2/favicons?domain=${new URL(bookmark.url).hostname}&sz=64" alt="${bookmark.name}">
+          <span>${bookmark.name}</span>
+        `;
+        container.appendChild(a);
+      });
+    })();
+  </script>
+
+</body>
+</html>
